@@ -1,10 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { ref, watch } from 'vue'
 import { camps as campsAr } from '../assets/camps'
 import Map from './Map.vue'
 
-const camps = ref(campsAr)
-const activeCamp = ref(null)
+import type { Camp } from '../assets/camps'
+
+const camps = ref<Camp[]>(campsAr)
+const activeCamp = ref<number | null>(null)
 
 watch(activeCamp, (newActiveCamp) => {
   // console.log('new active camp:' + newActiveCamp)

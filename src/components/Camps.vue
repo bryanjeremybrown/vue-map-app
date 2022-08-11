@@ -1,16 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { camps as campsAr } from '../assets/camps'
 import { useRoute } from 'vue-router'
 
-const route = useRoute()
-console.log('id: ', route.params.id)
+import type { Camp } from '../assets/camps'
 
-const routeId = parseInt(route.params.id)
-const campObj = campsAr.find(camp => camp.id === routeId)
-const camp = ref(campObj)
+const route = useRoute()
+// console.log('id: ', route.params.id)
+
+const routeId: number = parseInt(route.params.id as string)
+const campObj: Camp | undefined = campsAr.find(camp => camp.id === routeId)
+const camp = ref<Camp | undefined>(campObj)
 </script>
 
 <template>
-  <h1>{{ camp.name }}</h1>
+  <h1 v-if="camp">{{ camp.name }}</h1>
 </template>

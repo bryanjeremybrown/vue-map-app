@@ -13,7 +13,6 @@ const routes = [
     {path: '/camps/:id', component: Camps},
 ]
 const router = createRouter({
-    mode: 'history',
     history: createWebHistory(),
     routes: routes,
 })
